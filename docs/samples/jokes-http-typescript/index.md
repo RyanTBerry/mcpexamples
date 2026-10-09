@@ -77,6 +77,30 @@ You should again see the following error:
 
 Again - don't worry - this error message is nothing to be worried about!
 
+## 🚪 Surface the MCP server through Azure API Management
+
+The sample includes Bicep that registers the Container App as a native
+Streamable HTTP MCP API in an existing Azure API Management service. The
+deployment creates the APIM backend and exposes the MCP endpoint at:
+
+```text
+https://<apim-service-name>.azure-api.net/jokes/mcp
+```
+
+To deploy against an existing APIM service, set these environment variables
+before running `azd up`:
+
+```azurecli
+azd env set APIM_RESOURCE_GROUP_NAME mcpdemo
+azd env set APIM_SERVICE_NAME rbapimmcp
+azd up
+```
+
+The APIM service must use an API Management version that supports native MCP
+APIs. The sample uses the `2025-09-01-preview` resource API version. The APIM
+API is configured without subscription-key enforcement for a simple demo. Add
+authentication and rate limiting before using this pattern for production.
+
 ## 👨‍💻 Use the Jokes MCP Server in Visual Studio Code / GitHub Copilot
 
 To use the Jokes MCP Server, you need to use the URL of your server (can be either your devtunnel URL or your deployed Azure Container App) with the `/mcp` part at the end and add it as an MCP Server in Visual Studio Code.
@@ -103,4 +127,7 @@ This should give you a response like this:
 
 Now you have added the `JokesMCP` server to Visual Studio Code!
 
-![😁 Jokes MCP Server Sample (Streamable HTTP version)](https://m365-visitor-stats.azurewebsites.net/?resource=https://github.com/microsoft/copilot-studio-mcp/tree/main/samples/jokesmcp-http-typescript&dot=)
+When using the APIM deployment, use the APIM URL instead of the direct
+Container App URL.
+
+![😁 Jokes MCP Server Sample (Streamable HTTP version)](https://m365-visitor-stats.azurewebsites.net/?resource=https://github.com/RyanTBerry/mcpexamples/tree/main/samples/jokesmcp-http-typescript&dot=)

@@ -62,6 +62,10 @@ export default defineConfig({
             link: "/samples/jokes-http-typescript/",
           },
           {
+            text: "😁 Jokes MCP + APIM (HTTP - TS)",
+            link: "/samples/jokes-http-typescript/",
+          },
+          {
             text: "😁 Jokes (SSE - TS)",
             link: "/samples/jokes-sse-typescript/",
           },
@@ -125,6 +129,10 @@ export default defineConfig({
             link: "/samples/jokes-http-typescript/",
           },
           {
+            text: "😁 Jokes MCP + APIM (HTTP - TS)",
+            link: "/samples/jokes-http-typescript/",
+          },
+          {
             text: "😁 Jokes (SSE - TS)",
             link: "/samples/jokes-sse-typescript/",
           },
@@ -142,7 +150,7 @@ export default defineConfig({
     socialLinks: [
       {
         icon: "github",
-        link: "https://github.com/microsoft/pp-mcp/",
+        link: "https://github.com/RyanTBerry/mcpexamples/",
       },
     ],
   },

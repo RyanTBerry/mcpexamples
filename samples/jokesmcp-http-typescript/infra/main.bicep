@@ -14,6 +14,12 @@ param jokesmcpHttpTypescriptExists bool
 @description('Id of the user or app to assign application roles')
 param principalId string
 
+@description('Resource group containing the existing API Management service')
+param apimResourceGroupName string
+
+@description('Name of the existing API Management service')
+param apimServiceName string
+
 // Tags that should be applied to all resources.
 // 
 // Note that 'azd-service-name' tags should be applied separately to service host resources.
@@ -40,5 +46,17 @@ module resources 'resources.bicep' = {
     jokesmcpHttpTypescriptExists: jokesmcpHttpTypescriptExists
   }
 }
+
+module apiManagement 'apim.bicep' = {
+  name: 'jokes-mcp-api'
+  scope: resourceGroup(apimResourceGroupName)
+  params: {
+    apimServiceName: apimServiceName
+    backendMcpServerBaseUrl: resources.outputs.JOKES_MCP_SERVER_BASE_URL
+  }
+}
+
 output AZURE_CONTAINER_REGISTRY_ENDPOINT string = resources.outputs.AZURE_CONTAINER_REGISTRY_ENDPOINT
 output AZURE_RESOURCE_JOKESMCP_HTTP_TYPESCRIPT_ID string = resources.outputs.AZURE_RESOURCE_JOKESMCP_HTTP_TYPESCRIPT_ID
+output JOKES_MCP_BACKEND_URL string = '${resources.outputs.JOKES_MCP_SERVER_BASE_URL}/mcp'
+output JOKES_MCP_GATEWAY_URL string = apiManagement.outputs.mcpGatewayUrl

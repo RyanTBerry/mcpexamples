@@ -13,6 +13,12 @@
       },
       "principalId": {
         "value": "${AZURE_PRINCIPAL_ID}"
+      },
+      "apimResourceGroupName": {
+        "value": "${APIM_RESOURCE_GROUP_NAME=mcpdemo}"
+      },
+      "apimServiceName": {
+        "value": "${APIM_SERVICE_NAME=rbapimmcp}"
       }
     }
 }

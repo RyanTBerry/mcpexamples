@@ -120,3 +120,4 @@ module jokesmcpHttpTypescript 'br/public:avm/res/app/container-app:0.8.0' = {
 }
 output AZURE_CONTAINER_REGISTRY_ENDPOINT string = containerRegistry.outputs.loginServer
 output AZURE_RESOURCE_JOKESMCP_HTTP_TYPESCRIPT_ID string = jokesmcpHttpTypescript.outputs.resourceId
+output JOKES_MCP_SERVER_BASE_URL string = 'https://${jokesmcpHttpTypescript.outputs.fqdn}'
